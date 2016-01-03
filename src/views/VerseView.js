@@ -71,40 +71,44 @@ export class VerseView extends React.Component {
     const activeLang = (this.props.activeVerse && this.props.activeVerse.lang)
     const { book, chapter, version } = this.state
     return (
-      <div className='container'>
-        <form onSubmit={this.onSubmit.bind(this)} className={styles['form-nav']}>
-          <select value={book} onChange={(e) => { this.setState({book: e.target.value}); this.fetchVerse() }}>
-            <optgroup label='Old Testament'>
-              {this.props.books.filter(item => item.type === 'old').map((item, i) => (
-                <BookSelectView item={item} key={item.value} lang={activeLang} />
-              ))}
-            </optgroup>
-            <optgroup label='New Testament'>
-              {this.props.books.filter(item => item.type === 'new').map((item, i) => (
-                <BookSelectView item={item} key={item.value} lang={activeLang} />
-              ))}
-            </optgroup>
-          </select>
-          <select value={chapter} onChange={(e) => { this.setState({chapter: e.target.value}); this.fetchVerse() }}>
-            {this._generateVerses()}
-          </select>
-          <select value={version} onChange={(e) => { this.setState({version: e.target.value}); this.fetchVerse() }}>
-            <optgroup label='English'>
-              {this.props.versions.filter(item => item.lang === 'en').map((item, i) => (
-                <option key={item.value} value={item.value}>{item.name}</option>
-              ))}
-            </optgroup>
-            <optgroup label='Bahasa Indonesia'>
-              {this.props.versions.filter(item => item.lang === 'id').map((item, i) => (
-                <option key={item.value} value={item.value}>{item.name}</option>
-              ))}
-            </optgroup>
-          </select>
-        </form>
-        <button onClick={this.moveChapter.bind(this, 'prev')}>&lt;</button>
-        <button onClick={this.moveChapter.bind(this, 'next')}>&gt;</button>
+      <div className={'container ' + styles['container']}>
+        <div className={styles['header']}>
+          <form onSubmit={this.onSubmit.bind(this)} className={styles['form-nav']}>
+            <select value={book} onChange={(e) => { this.setState({book: e.target.value}); this.fetchVerse() }}>
+              <optgroup label='Old Testament'>
+                {this.props.books.filter(item => item.type === 'old').map((item, i) => (
+                  <BookSelectView item={item} key={item.value} lang={activeLang} />
+                ))}
+              </optgroup>
+              <optgroup label='New Testament'>
+                {this.props.books.filter(item => item.type === 'new').map((item, i) => (
+                  <BookSelectView item={item} key={item.value} lang={activeLang} />
+                ))}
+              </optgroup>
+            </select>
+            <select value={chapter} onChange={(e) => { this.setState({chapter: e.target.value}); this.fetchVerse() }}>
+              {this._generateVerses()}
+            </select>
+            <select className={styles['version']} value={version} onChange={(e) => { this.setState({version: e.target.value}); this.fetchVerse() }}>
+              <optgroup label='English'>
+                {this.props.versions.filter(item => item.lang === 'en').map((item, i) => (
+                  <option key={item.value} value={item.value}>{item.name}</option>
+                ))}
+              </optgroup>
+              <optgroup label='Bahasa Indonesia'>
+                {this.props.versions.filter(item => item.lang === 'id').map((item, i) => (
+                  <option key={item.value} value={item.value}>{item.name}</option>
+                ))}
+              </optgroup>
+            </select>
+          </form>
+        </div>
+        <div className={styles['buttons']}>
+          <button className={styles['left']} onClick={this.moveChapter.bind(this, 'prev')}>&lt;</button>
+          <button className={styles['right']} onClick={this.moveChapter.bind(this, 'next')}>&gt;</button>
+        </div>
         {this.props.isFetching
-          ? <div className='loading'>Loading...</div>
+          ? <div className={styles['loading']}>Loading...</div>
           : null}
         <ul className={styles['verse-list']}>
           {verses.map((item, i) => (

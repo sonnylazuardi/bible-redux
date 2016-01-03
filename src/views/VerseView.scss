@@ -6,7 +6,7 @@
 }
 
 .verse-number {
-  color: #999;
+  color: #eee;
   vertical-align: super;
   font-weight: bold;
   font-size: .8em;
@@ -14,4 +14,88 @@
 
 .form-nav {
   text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin-top: 80px;
+  h3 {
+    color: #eee;
+    font-family: 'Helvetica Neue', Arial;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+}
+
+.header {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  text-align: center;
+  padding: 10px;
+  z-index: 100;
+
+  select {
+    padding: 10px;
+    appearance: none;
+    border-radius: 0;
+    border: 1px solid #eee;
+    background: transparent
+  }
+}
+
+.buttons {
+
+  button {
+    border: 1px solid #eee;
+    background: transparent;
+    height: 60px;
+    width: 60px;
+  }
+
+  .left {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 50%;
+  }
+  .right {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    top: 50%;
+  }
+}
+
+.loading {
+  text-indent: -99999px;
+  background: rgba(0,0,0,.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 100px;
+    .version {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .container {
+    margin-top: 100px;
+  }
+  .buttons {
+    button {
+      top: 18px !important;
+    }
+  }
 }

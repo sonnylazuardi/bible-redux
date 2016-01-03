@@ -7,11 +7,9 @@ import { Route, IndexRoute } from 'react-router'
 // your current file is.
 import CoreLayout from 'layouts/CoreLayout'
 import VerseView from 'views/VerseView'
-import AboutView from 'views/AboutView'
 
 export default (
   <Route path='/' component={CoreLayout}>
     <IndexRoute component={VerseView} />
-    <Route path='/about' component={AboutView} />
   </Route>
 )
