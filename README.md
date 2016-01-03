@@ -3,6 +3,10 @@ Bible Redux
 
 :book: Beautiful open bible app built with the latest Frontend technology Redux, ReactJS, ES2015. Bible Redux is using [Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit).
 
+![bibleredux1](https://lh3.googleusercontent.com/-kqEL2J5Kgno/VokMp4qkImI/AAAAAAAACDs/QmMmONj9ubY/s0/Screen+Shot+2016-01-03+at+6.56.08+PM.png "bibleredux1.png")
+
+![enter image description here](https://lh3.googleusercontent.com/-7zFxF-CdrCA/VokMwxR8FAI/AAAAAAAACD4/RvI_CTc6JjY/s0/Screen+Shot+2016-01-03+at+6.56.47+PM.png "bibleredux2")
+
 Table of Contents
 -----------------
 1. [Requirements](#requirements)
