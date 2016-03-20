@@ -52,7 +52,13 @@ function getCurrentActiveVerse (state, payload) {
 }
 
 export default handleActions({
-  [REQUEST_VERSE]: (state, { payload }) => Object.assign({}, state, { isFetching: true }),
+  [REQUEST_VERSE]: (state, { payload }) => {
+    const activeVerse = getCurrentActiveVerse(state, payload)
+    return Object.assign({}, state, {
+      isFetching: true,
+      activeVerse
+    })
+  },
   [RECEIVE_VERSE]: (state, { payload }) => {
     const activeVerse = getCurrentActiveVerse(state, payload)
     return Object.assign({}, state, {

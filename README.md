@@ -1,21 +1,11 @@
-React Redux Starter Kit
-=======================
+Bible Redux
+===========
 
-[![Join the chat at https://gitter.im/davezuko/react-redux-starter-kit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/davezuko/react-redux-starter-kit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/davezuko/react-redux-starter-kit?branch=master)
-[![dependencies](https://david-dm.org/davezuko/react-redux-starter-kit.svg)](https://david-dm.org/davezuko/react-redux-starter-kit)
-[![devDependency Status](https://david-dm.org/davezuko/react-redux-starter-kit/dev-status.svg)](https://david-dm.org/davezuko/react-redux-starter-kit#info=devDependencies)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+:book: Beautiful open bible app built with the latest front-end technology Redux, ReactJS, ES2015. Bible Redux is using [Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit). The data is taken from [Alkitab API](https://github.com/sonnylazuardi/alkitab-api).
 
-> ### This Project Recently Upgraded to Babel 6!
-> Woohoo! If you'd like to try it out, you're welcome to build directly from the master branch. However, if troubleshooting issues with Babel isn't quite your thing, just pull the [stable v0.18.0 release](https://github.com/davezuko/react-redux-starter-kit/tree/v0.18.0) and continue on your way with Babel 5.
+![bibleredux1](https://lh3.googleusercontent.com/-kqEL2J5Kgno/VokMp4qkImI/AAAAAAAACDs/QmMmONj9ubY/s0/Screen+Shot+2016-01-03+at+6.56.08+PM.png "bibleredux1.png")
 
-> ### Want Semicolons?
-> After installing npm dependencies, open `.eslintrc`, change the `semi` rule from `never` to `always`, and then run `npm run lint:fix` -- Easy as that! Alternatively, use the same npm script after installing and extending your preferred ESLint configuration; it's easy to customize the project's code style to suit your team's needs. See, we can coexist peacefully.
-
-This starter kit is designed to get you up and running with a bunch of awesome new front-end technologies, all on top of a configurable, feature-rich webpack build system that's already setup to provide hot reloading, CSS modules with Sass support, unit testing, code coverage reports, bundle splitting, and a whole lot more.
-
-The primary goal of this project is to remain as **unopinionated** as possible. Its purpose is not to dictate your project structure or to demonstrate a complete sample application, but to provide a set of tools intended to make front-end development robust, easy, and, most importantly, fun. Check out the full feature list below!
+![enter image description here](https://lh3.googleusercontent.com/-7zFxF-CdrCA/VokMwxR8FAI/AAAAAAAACD4/RvI_CTc6JjY/s0/Screen+Shot+2016-01-03+at+6.56.47+PM.png "bibleredux2")
 
 Table of Contents
 -----------------
@@ -24,12 +14,7 @@ Table of Contents
 1. [Getting Started](#getting-started)
 1. [Usage](#usage)
 1. [Structure](#structure)
-1. [Webpack](#webpack)
-1. [Server](#server)
-1. [Styles](#styles)
 1. [Testing](#testing)
-1. [Deployment](#deployment)
-1. [Troubleshooting](#troubleshooting)
 
 Requirements
 ------------
@@ -77,8 +62,8 @@ Getting Started
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git
-$ cd react-redux-starter-kit
+$ git clone https://github.com/sonnylazuardi/redux-bible.git
+$ cd redux-bible
 $ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
 $ npm start                     # Compile and launch
 ```
@@ -86,13 +71,9 @@ $ npm start                     # Compile and launch
 Usage
 -----
 
-Before delving into the descriptions of each available npm script, here's a brief summary of the three which will most likely be your bread and butter:
-
 * Doing live development? Use `npm start` to spin up the dev server.
 * Compiling the application to disk? Use `npm run compile`.
 * Deploying to an environment? `npm run deploy` can help with that.
-
-**NOTE:** This package makes use of [debug](https://github.com/visionmedia/debug) to improve your debugging experience. For convenience, all of messages are prefixed with `app:*`. If you'd like to to change what debug statements are displayed, you can override the `DEBUG` environment variable to `app:*` via the CLI (e.g. `DEBUG=app:* npm start`) or update the `~/.env` file.
 
 Great, now that introductions have been made here's everything in full detail:
 
@@ -106,26 +87,8 @@ Great, now that introductions have been made here's everything in full detail:
 * `npm run lint`- Lint all `.js` files.
 * `npm run lint:fix` - Lint and fix all `.js` files. [Read more on this](http://eslint.org/docs/user-guide/command-line-interface.html#fix).
 
-**NOTE:** Deploying to a specific environment? Make sure to specify your target `NODE_ENV` so webpack will use the correct configuration. For example: `NODE_ENV=production npm run compile` will compile your application with `~/build/webpack/_production.js`.
-
-### Configuration
-
-Basic project configuration can be found in `~/config/_base.js`. Here you'll be able to redefine your `src` and `dist` directories, adjust compilation settings, tweak your vendor dependencies, and more. For the most part, you should be able to make changes in here **without ever having to touch the webpack build configuration**. If you need environment-specific overrides, create a file with the name of target `NODE_ENV` prefixed by an `_` in `~/config` (see `~/config/_production.js` for an example).
-
-Common configuration options:
-
-* `dir_src` - application source code base path
-* `dir_dist` - path to build compiled application to
-* `server_host` - hostname for the express server
-* `server_port` - port for the express server
-* `compiler_css_modules` - whether or not to enable CSS modules
-* `compiler_source_maps` - whether or not to generate source maps
-* `compiler_vendor` - packages to separate into to the vendor bundle
-
 Structure
 ---------
-
-The folder structure provided is only meant to serve as a guide, it is by no means prescriptive. It is something that has worked very well for me and my team, but use only what makes sense to you.
 
 ```
 .
@@ -140,6 +103,7 @@ The folder structure provided is only meant to serve as a guide, it is by no mea
 │   ├── containers           # Components that provide context (e.g. Redux Provider)
 │   ├── layouts              # Components that dictate major page structure
 │   ├── redux                # Redux-specific pieces
+│   │   ├── data             # All static data declaration
 │   │   ├── modules          # Collections of reducers/constants/actions
 │   │   └── utils            # Redux-specific helpers
 │   ├── routes               # Application route definitions
@@ -150,98 +114,6 @@ The folder structure provided is only meant to serve as a guide, it is by no mea
 └── tests                    # Unit tests
 ```
 
-### Components vs. Views vs. Layouts
-
-**TL;DR:** They're all components.
-
-This distinction may not be important for you, but as an explanation: A **Layout** is something that describes an entire page structure, such as a fixed navigation, viewport, sidebar, and footer. Most applications will probably only have one layout, but keeping these components separate makes their intent clear. **Views** are components that live at routes, and are generally rendered within a **Layout**. What this ends up meaning is that, with this structure, nearly everything inside of **Components** ends up being a dumb component.
-
-Webpack
--------
-
-### Configuration
-The webpack compiler configuration is located in `~/build/webpack`. Here you'll find configurations for each environment; `development` and `production` exist out of the box.
-
-**Note**: There has been a conscious decision to keep development-specific configuration (such as hot-reloading) out of `.babelrc`. By doing this, it's possible to create cleaner development builds (such as for teams that have a `dev` -> `stage` -> `production` workflow) that don't, for example, constantly poll for HMR updates.
-
-So why not just disable HMR? Well, as a further explanation, enabling `react-transform-hmr` in `.babelrc` but building the project without HMR enabled (think of running tests with `NODE_ENV=development` but without a dev server) causes errors to be thrown, so this decision also alleviates that issue.
-
-### Vendor Bundle
-You can redefine which packages to bundle separately by modifying `compiler_vendor` in `~/config/_base.js`. These default to:
-
-```js
-[
-  'history',
-  'react',
-  'react-redux',
-  'react-router',
-  'redux-simple-router',
-  'redux'
-]
-```
-
-### Webpack Root Resolve
-Webpack is configured to make use of [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), which lets you import local packages as if you were traversing from the root of your `~/src` directory. Here's an example:
-
-```js
-// current file: ~/src/views/some/nested/View.js
-
-// What used to be this:
-import SomeComponent from '../../../components/SomeComponent'
-
-// Can now be this:
-import SomeComponent from 'components/SomeComponent' // Hooray!
-```
-
-### Globals
-
-These are global variables available to you anywhere in your source code. If you wish to modify them, they can be found as the `globals` key in `~/config/index.js`.
-
-* `process.env.NODE_ENV` - the active `NODE_ENV` when the build started
-* `__DEV__` - True when `process.env.NODE_ENV` is `development`
-* `__PROD__` - True when `process.env.NODE_ENV` is `production`
-
-Additionally, the following variables are globally available by automatic imports (see section "Globally available imports" further below):
-
-* `React` (imported from `'react'`)
-* `ReactDOM` (imported from `'react-dom'`)
-
-### Provided Plugins
-
-#### Globally availabe imports via ProvidePlugin
-
-Webpack is configured to use [ProvidePlugin](https://webpack.github.io/docs/list-of-plugins.html#provideplugin), which lets you use commonly used imports without explicitly writing an import statement, reducing boilerplate. To add more automatic imports, add them to `compiler_globals` in `~/config/_base`. Additionally, add them to the globals object in your `.eslintrc` so you don't encounter misleading linter errors.
-
-Server
-------
-
-This starter kit comes packaged with an Express server. It's important to note that the sole purpose of this server is to provide `webpack-dev-middleware` and `webpack-hot-middleware` for hot module replacement. Using a custom Express app in place of webpack-dev-server will hopefully make it easier for users to extend the starter kit to include functionality such as back-end API's, isomorphic/universal rendering, and more -- all without bloating the base boilerplate. Because of this, it should be noted that the provided server is **not** production-ready. If you're deploying to production, take a look at [the deployment section](#deployment).
-
-Styles
-------
-
-Both `.scss` and `.css` file extensions are supported out of the box and are configured to use [CSS Modules](https://github.com/css-modules/css-modules). After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
-
-**NOTE:** If you're importing styles from a base styles directory (useful for generic, app-wide styles), you can make use of the `styles` alias, e.g.:
-
-```js
-// current file: ~/src/components/some/nested/component/index.jsx
-import 'styles/core.scss' // this imports ~/src/styles/core.scss
-```
-
-Furthermore, this `styles` directory is aliased for sass imports, which further eliminates manual directory traversing; this is especially useful for importing variables/mixins.
-
-Here's an example:
-
-```scss
-// current file: ~/src/styles/some/nested/style.scss
-// what used to be this (where base is ~/src/styles/_base.scss):
-@import '../../base';
-
-// can now be this:
-@import 'base';
-```
-
 Testing
 -------
 
@@ -249,29 +121,7 @@ To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma
 
 Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/_base.js`.
 
-Deployment
-----------
+License
+-------
 
-Out of the box, this starter kit is deployable by serving the `~/dist` folder generated by `npm run compile` (make sure to specify your target `NODE_ENV` as well). This project does not concern itself with the details of server-side rendering or API structure, since that demands an opinionated structure that makes it difficult to extend the starter kit. However, if you do need help with more advanced deployment strategies, here are a few tips:
-
-If you are serving the application via a web server such as nginx, make sure to direct incoming routes to the root `~/dist/index.html` file and let react-router take care of the rest. The Express server that comes with the starter kit is able to be extended to serve as an API or whatever else you need, but that's entirely up to you.
-
-Have more questions? Feel free to submit an issue or join the Gitter chat!
-
-Troubleshooting
----------------
-
-### `npm run dev:nw` produces `cannot read location of undefined.`
-
-This is most likely because the new window has been blocked by your popup blocker, so make sure it's disabled before trying again.
-
-Reference: [issue 110](https://github.com/davezuko/react-redux-starter-kit/issues/110)
-
-### High editor CPU usage after compilation
-
-While this is common to any sizable application, it's worth noting for those who may not know: if you happen to notice higher CPU usage in your editor after compiling the application, you may need to tell your editor not to process the dist folder. For example, in Sublime you can add:
-
-
-```
-	"folder_exclude_patterns": [".svn",	".git",	".hg", "CVS",	"node_modules",	"dist"]
-```
+MIT Licensed &copy; 2015 @davezuko [@sonnylazuardi](https://twitter.com/sonnylazuardi)
