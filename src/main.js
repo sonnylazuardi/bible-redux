@@ -8,7 +8,7 @@ const history = useBasename(createHistory)({
   basename: __BASENAME__
 })
 const store = configureStore(window.__INITIAL_STATE__)
-window.apiUrl = 'http://busintime.id:8080/alkitab'
+window.apiUrl = 'http://alkitab.gbippl.id/alkitab'
 
 syncReduxAndRouter(history, store, (state) => state.router)
 
